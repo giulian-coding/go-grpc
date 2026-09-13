@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package hosts;
+
+option go_package = "github.com/giulian-coding/hosts/internal/grpc;grpc";
+
+service JobService {
+  rpc SendJob (JobRequest) returns (JobReply) {}
+}
+
+message Payload {
+  string task = 1;
+  string parameters = 2;
+}
+
+message JobRequest {
+  string id = 1;
+  Payload payload = 2;
+}
+
+message JobReply {
+  string message = 1;
+}
